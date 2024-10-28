@@ -279,3 +279,62 @@ void relatorioVendas(Venda *vendas, int quantidade_vendas, Produto *produtos, in
         printf("Venda ID: %d, Cliente: %s, Produto: %s, Quantidade: %d\n", vendas[i].id, c->nome, p->nome, vendas[i].quantidade);
     }
 }
+void cadastrarCliente(Cliente *clientes, int *quantidade_clientes) {
+    Cliente c;
+    c.id = *quantidade_clientes + 1;
+    printf(BOLD "\nCadastrar Cliente\n" RESET);
+
+    printf("Nome: ");
+    getchar(); 
+    fgets(c.nome, sizeof(c.nome), stdin);
+    c.nome[strcspn(c.nome, "\n")] = 0; 
+
+    printf("Email: ");
+    fgets(c.email, sizeof(c.email), stdin);
+    c.email[strcspn(c.email, "\n")] = 0; 
+
+    clientes[*quantidade_clientes] = c;
+    (*quantidade_clientes)++;
+    printf(GREEN "Cliente cadastrado com sucesso!\n" RESET);
+}
+void salvarProdutos(Produto *produtos, int quantidade) {
+    FILE *file = fopen("produtos.dat", "wb");
+    fwrite(produtos, sizeof(Produto), quantidade, file);
+    fclose(file);
+}
+
+void carregarProdutos(Produto *produtos, int *quantidade) {
+    FILE *file = fopen("produtos.dat", "rb");
+    if (file) {
+        *quantidade = fread(produtos, sizeof(Produto), 100, file);
+        fclose(file);
+    }
+}
+
+void salvarClientes(Cliente *clientes, int quantidade) {
+    FILE *file = fopen("clientes.dat", "wb");
+    fwrite(clientes, sizeof(Cliente), quantidade, file);
+    fclose(file);
+}
+
+void carregarClientes(Cliente *clientes, int *quantidade) {
+    FILE *file = fopen("clientes.dat", "rb");
+    if (file) {
+        *quantidade = fread(clientes, sizeof(Cliente), 100, file);
+        fclose(file);
+    }
+}
+
+void salvarVendas(Venda *vendas, int quantidade) {
+    FILE *file = fopen("vendas.dat", "wb");
+    fwrite(vendas, sizeof(Venda), quantidade, file);
+    fclose(file);
+}
+
+void carregarVendas(Venda *vendas, int *quantidade) {
+    FILE *file = fopen("vendas.dat", "rb");
+    if (file) {
+        *quantidade = fread(vendas, sizeof(Venda), 100, file);
+        fclose(file);
+    }
+}
