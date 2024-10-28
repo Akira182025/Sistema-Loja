@@ -12,7 +12,7 @@
 #define USERNAME "cadm"
 #define PASSWORD "c123"
 
-// Estruturas de Dados
+
 typedef struct {
     int id;
     char nome[50];
@@ -33,7 +33,7 @@ typedef struct {
     int quantidade;
 } Venda;
 
-// Funções de Arquivo
+
 void salvarProdutos(Produto *produtos, int quantidade);
 void carregarProdutos(Produto *produtos, int *quantidade);
 void salvarClientes(Cliente *clientes, int quantidade);
@@ -41,7 +41,7 @@ void carregarClientes(Cliente *clientes, int *quantidade);
 void salvarVendas(Venda *vendas, int quantidade);
 void carregarVendas(Venda *vendas, int *quantidade);
 
-// Funções Globais
+
 void login();
 void menu();
 void adicionarProduto(Produto *produtos, int *quantidade);
@@ -62,10 +62,10 @@ int main() {
     int quantidade_produtos = 0, quantidade_clientes = 0, quantidade_vendas = 0;
     int opcao;
 
-    // Função de Login
+    
     login();
 
-    // Carregar dados dos arquivos binários
+    
     carregarProdutos(produtos, &quantidade_produtos);
     carregarClientes(clientes, &quantidade_clientes);
     carregarVendas(vendas, &quantidade_vendas);
