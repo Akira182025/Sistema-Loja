@@ -11,12 +11,12 @@ Matheus da Silva Cruz - RA: 52.124.013-5
 
 <h2>Descrição do Projeto</h2>
 
-Este projeto é um sistema gerenciamento de uma loja, que permite registro e login de clientes e usuários,
+Este projeto é um sistema gerenciamento de uma loja, que permite registro de clientes,
 adicionar, editar e remover produtos, consulta de produtos, controle de estoque e registro de vendas.  
 
 <h2>Funcionalidades</h2>
 
-<li><b>Login:</b> Permite acesso seguro ao sistema para usuários cadastrados.</li>
+<li><b>Login:</b> Permite acesso seguro ao sistema para o usuário cadastrado.</li>
 <li><b>Adicionar, Editar e Remover Produtos:</b> Facilita a gestão do catálogo de produtos, permitindo ajustes rápidos.</li>
 <li><b>Consulta de Produtos:</b> Permite buscar e visualizar detalhes dos produtos disponíveis.</li>
 <li><b>Controle de Estoque:</b> Monitora a quantidade de produtos em estoque e gera alertas para reposição.</li>
@@ -42,10 +42,27 @@ adicionar, editar e remover produtos, consulta de produtos, controle de estoque 
 
 <h2>Como usar o programa</h2>
 
-Para usar o programa de gerenciamento de loja, inicie criando um registro com seu login e uma senha. 
-Depois, faça login com essas credenciais.
-<br>
-Para o controle de produtos você pode usar as opções de adicionar,editar ou remover conforme o necessário,
-já para o controle de estoque você pode visualizar e atualizar quantidades. Para vendas, é gerado um arquivo
-contendo todas as vendas realizadas e existe a opção de cadastro de clientes.
+
+<h2>1. Login</h2>
+<ul>
+    <li><strong>Usuário:</strong> cadm</li>
+    <li><strong>Senha:</strong> c123</li>
+</ul>
+<p>Comece fazendo login com as credenciais acima.</p>
+
+<h2>2. Controle de Produtos</h2>
+<p>Você pode:</p>
+<ul>
+    <li><strong>Adicionar</strong> novos produtos</li>
+    <li><strong>Editar</strong> produtos existentes</li>
+    <li><strong>Remover</strong> produtos conforme necessário</li>
+</ul>
+
+<h2>3. Controle de Estoque</h2>
+<p>Visualize e atualize as quantidades de produtos disponíveis.</p>
+
+<h2>4. Vendas</h2>
+<p>Um arquivo será gerado contendo todas as vendas realizadas.</p>
+<p>Há também a opção de <strong>cadastro de clientes</strong>.</p>
+
 
