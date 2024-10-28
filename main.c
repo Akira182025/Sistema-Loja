@@ -225,3 +225,57 @@ void consultarProdutos(Produto *produtos, int quantidade) {
         printf("ID: %d, Nome: %s, Preço: %.2f, Estoque: %d\n", produtos[i].id, produtos[i].nome, produtos[i].preco, produtos[i].estoque);
     }
 }
+
+void controleEstoque(Produto *produtos, int quantidade) {
+    printf(BOLD "\nControle de Estoque\n" RESET);
+    for (int i = 0; i < quantidade; i++) {
+        if (produtos[i].estoque < 5) {
+            printf(RED "Produto %s com estoque baixo! Quantidade atual: %d\n" RESET, produtos[i].nome, produtos[i].estoque);
+        }
+    }
+}
+
+
+void registrarVenda(Venda *vendas, int *quantidade_vendas, Produto *produtos, int quantidade_produtos, Cliente *clientes, int quantidade_clientes) {
+    int id_produto, id_cliente, quantidade;
+    printf(BOLD "\nRegistrar Venda\n" RESET);
+
+    printf("ID do Produto: ");
+    scanf("%d", &id_produto);
+    if (id_produto < 1 || id_produto > quantidade_produtos) {
+        printf(RED "Produto não encontrado!\n" RESET);
+        return;
+    }
+
+    printf("ID do Cliente: ");
+    scanf("%d", &id_cliente);
+    if (id_cliente < 1 || id_cliente > quantidade_clientes) {
+        printf(RED "Cliente não encontrado!\n" RESET);
+        return;
+    }
+
+    Produto *p = &produtos[id_produto - 1];
+    printf("Quantidade: ");
+    scanf("%d", &quantidade);
+    if (quantidade > p->estoque) {
+        printf(RED "Estoque insuficiente!\n" RESET);
+        return;
+    }
+    p->estoque -= quantidade;
+
+    vendas[*quantidade_vendas].id = *quantidade_vendas + 1;
+    vendas[*quantidade_vendas].id_produto = p->id;
+    vendas[*quantidade_vendas].id_cliente = id_cliente;
+    vendas[*quantidade_vendas].quantidade = quantidade;
+    (*quantidade_vendas)++;
+    printf(GREEN "Venda registrada com sucesso!\n" RESET);
+}
+
+void relatorioVendas(Venda *vendas, int quantidade_vendas, Produto *produtos, int quantidade_produtos, Cliente *clientes, int quantidade_clientes) {
+    printf(BOLD "\nRelatório de Vendas\n" RESET);
+    for (int i = 0; i < quantidade_vendas; i++) {
+        Produto *p = &produtos[vendas[i].id_produto - 1];
+        Cliente *c = &clientes[vendas[i].id_cliente - 1]; 
+        printf("Venda ID: %d, Cliente: %s, Produto: %s, Quantidade: %d\n", vendas[i].id, c->nome, p->nome, vendas[i].quantidade);
+    }
+}
