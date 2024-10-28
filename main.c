@@ -116,3 +116,51 @@ int main() {
     }
     return 0;
 }
+
+void login() {
+    char username[50];
+    char password[50];
+
+    printf(BOLD BLUE "\n EASY-STORE™ - Sistema de Gestão\n" RESET);
+    printf("\n" BOLD "Digite seu usuário: " RESET);
+    scanf("%s", username);
+
+    printf(BOLD "Digite sua senha: " RESET);
+    scanf("%s", password);
+
+    if (strcmp(username, USERNAME) == 0 && strcmp(password, PASSWORD) == 0) {
+        printf(GREEN "\nLogin bem-sucedido! Bem-vindo(a), %s!\n\n" RESET, username);
+    } else {
+        printf(RED "\nUsuário ou senha incorretos. Encerrando o sistema.\n" RESET);
+        exit(0);
+    }
+}
+
+void menu() {
+    limparTela();
+    printf(CYAN "\n==================== MENU ====================\n" RESET);
+    printf(BOLD "1. " RESET "Adicionar Produto\n");
+    printf(BOLD "2. " RESET "Editar Produto\n");
+    printf(BOLD "3. " RESET "Remover Produto\n");
+    printf(BOLD "4. " RESET "Consultar Produtos\n");
+    printf(BOLD "5. " RESET "Controle de Estoque\n");
+    printf(BOLD "6. " RESET "Registrar Venda\n");
+    printf(BOLD "7. " RESET "Relatório de Vendas\n");
+    printf(BOLD "8. " RESET "Cadastrar Cliente\n");
+    printf(BOLD "9. " RESET "Sair\n");
+    printf(CYAN "==============================================\n" RESET);
+}
+
+void limparTela() {
+#ifdef _WIN32
+    system("cls");
+#else
+    system("clear");
+#endif
+}
+
+void pressionarQualquerTecla() {
+    printf("\nPressione qualquer tecla para continuar...");
+    getchar(); 
+    getchar(); 
+}
