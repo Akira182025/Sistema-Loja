@@ -164,3 +164,64 @@ void pressionarQualquerTecla() {
     getchar(); 
     getchar(); 
 }
+
+void adicionarProduto(Produto *produtos, int *quantidade) {
+    Produto p;
+    p.id = *quantidade + 1;
+    printf(BOLD "\nAdicionando novo produto:\n" RESET);
+    printf("Nome do Produto: ");
+    getchar(); 
+    fgets(p.nome, sizeof(p.nome), stdin);
+    p.nome[strcspn(p.nome, "\n")] = 0; 
+    printf("Preço do Produto: ");
+    scanf("%f", &p.preco);
+    printf("Quantidade em Estoque: ");
+    scanf("%d", &p.estoque);
+    produtos[*quantidade] = p;
+    (*quantidade)++;
+    printf(GREEN "Produto adicionado com sucesso!\n" RESET);
+}
+
+void editarProduto(Produto *produtos, int quantidade) {
+    int id;
+    printf(BOLD "\nEditar Produto\n" RESET);
+    printf("ID do Produto para editar: ");
+    scanf("%d", &id);
+    if (id < 1 || id > quantidade) {
+        printf(RED "Produto não encontrado!\n" RESET);
+        return;
+    }
+    Produto *p = &produtos[id - 1];
+    printf("Novo Nome: ");
+    getchar(); 
+    fgets(p->nome, sizeof(p->nome), stdin);
+    p->nome[strcspn(p->nome, "\n")] = 0; 
+    printf("Novo Preço: ");
+    scanf("%f", &p->preco);
+    printf("Nova Quantidade em Estoque: ");
+    scanf("%d", &p->estoque);
+    printf(GREEN "Produto atualizado com sucesso!\n" RESET);
+}
+
+void removerProduto(Produto *produtos, int *quantidade) {
+    int id;
+    printf(BOLD "\nRemover Produto\n" RESET);
+    printf("ID do Produto para remover: ");
+    scanf("%d", &id);
+    if (id < 1 || id > *quantidade) {
+        printf(RED "Produto não encontrado!\n" RESET);
+        return;
+    }
+    for (int i = id - 1; i < *quantidade - 1; i++) {
+        produtos[i] = produtos[i + 1];
+    }
+    (*quantidade)--;
+    printf(GREEN "Produto removido com sucesso!\n" RESET);
+}
+
+void consultarProdutos(Produto *produtos, int quantidade) {
+    printf(BOLD "\nConsulta de Produtos\n" RESET);
+    for (int i = 0; i < quantidade; i++) {
+        printf("ID: %d, Nome: %s, Preço: %.2f, Estoque: %d\n", produtos[i].id, produtos[i].nome, produtos[i].preco, produtos[i].estoque);
+    }
+}
